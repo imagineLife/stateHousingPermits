@@ -2,10 +2,10 @@ function resize(){
     
     let { parentDivWidth, parentDivHeight, divWidthLessMargins, divHeightLessMargins } = lib.getDimsFromParent(chartDiv, margin);
     
-    let resizeW = (parentDivWidth > 900) ? 900 : parentDivWidth
+    let resizeW = (parentDivWidth > 700) ? 700 : parentDivWidth
     let percent = (resizeW > 550) ? .2 : .4
-    svgObj.attr("height", resizeW * .6);
-    gObj.attr('transform', `scale(${resizeW/1000}) translate(${resizeW * percent },0)`);
+    svgObj.attr("height", resizeW * .7);
+    gObj.attr('transform', `scale(${resizeW/850}) translate(${resizeW * percent },0)`);
     d3.selectAll('.statePath').attr('d', d => pathGenerator(d))
 
 }
@@ -117,15 +117,15 @@ let colorScale = d3.scaleSequential(d3.interpolateReds);
 
 //set svg height & width from div computed dimensions
 //NOTE: can be the divLessMargins, for 'padding' effect
-let resizeW = (parentDivWidth > 900) ? 900 : parentDivWidth
+let resizeW = (parentDivWidth > 700) ? 700 : parentDivWidth
 svgObj.attrs({
     'class': 'svgWrapper',
     "width" : resizeW,
-    "height" : resizeW * .6
+    "height" : resizeW * .7
 });
 
 let percent = (resizeW > 550) ? .2 : .4
-gObj.attr('transform', `scale(${resizeW/1000}) translate(${resizeW * percent},0)`);
+gObj.attr('transform', `scale(${resizeW/850}) translate(${resizeW * percent},0)`);
 
 loadAndProcessData().then(res => {
     buildChart(res)
