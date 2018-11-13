@@ -68,8 +68,14 @@ caption{
 }
 
 @media only screen and (min-width: 400px){
+  .svgWrapper{
+    display: block;
+    margin: 0 auto;
+  }
+
   .top10Towns{
     width: 350px;
   }
+
 }
 

@@ -119,6 +119,7 @@ let colorScale = d3.scaleSequential(d3.interpolateReds);
 //NOTE: can be the divLessMargins, for 'padding' effect
 let resizeW = (parentDivWidth > 900) ? 900 : parentDivWidth
 svgObj.attrs({
+    'class': 'svgWrapper',
     "width" : resizeW,
     "height" : resizeW * .6
 });
