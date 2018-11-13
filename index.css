@@ -52,6 +52,21 @@ caption{
   margin-bottom: 20px;
 }
 
+.toolTip {
+  position: absolute;
+  display: none;
+  min-width: 80px;
+  height: auto;
+  background: none repeat scroll 0 0 rgb(25,25,25);
+  background-color: rgba(255,255,255,.95);
+  border: .5px dotted rgb(142, 136, 131);
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 1.25em;
+  font-family: sans-serif;
+  line-height: 1;
+}
+
 @media only screen and (min-width: 400px){
   .top10Towns{
     width: 350px;

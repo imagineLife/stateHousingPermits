@@ -34,13 +34,18 @@ function buildChart(towns){
         'class': 'statePath',
         'fill': d => colorScale(+d.properties.permits)
     })
-    .on('click', d => console.log(d.properties["NAME10"]))
-    .append('title')
-        .text(showTownName);
+    .on('mouseover', d => showToolTip(d))
+    .on("mouseout", tooltipDiv.style("display", "none"))
 
     svgObj.call(d3.zoom().on('zoom', function(){
         gObj.attr("transform", d3.event.transform);
     }));
+
+    // svgObj.on('click', (d) => {
+    //     console.log('test')
+    //     console.log(d)
+    //     tooltipDiv.style("display", "none")
+    // })
 }
 
 function buildTable(data, colNames){
@@ -77,6 +82,23 @@ function buildTable(data, colNames){
     return table;
 }
 
+function showToolTip(d){
+    console.log('showToolTip')
+    let name = d.properties.NAME10;
+    let permits = d.properties.permits;
+
+    setTimeout(() => {
+        tooltipDiv.style("display", "none")
+    }, 2500)
+    
+    return tooltipDiv
+        .style("left", (d3.event.pageX - 150 > 0 ) ? d3.event.pageX - 75 +  "px" : 0 + 'px')
+        .style("top", d3.event.pageY - 100 + "px")
+        .style("display", "inline-block")
+        .html(`<b>${name}</b> - ${permits} permits`);
+}
+
+let tooltipDiv = d3.select('.toolTip')
 
 let removeWater = (d) => d.properties["NAME10"].indexOf('defined') < 0;
 let showTownName = d => `${d.properties["NAME10"]}: ${d.properties.permits}`;
