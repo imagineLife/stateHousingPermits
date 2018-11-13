@@ -3,8 +3,9 @@ function resize(){
     let { parentDivWidth, parentDivHeight, divWidthLessMargins, divHeightLessMargins } = lib.getDimsFromParent(chartDiv, margin);
     
     let resizeW = (parentDivWidth > 900) ? 900 : parentDivWidth
+    let percent = (resizeW > 550) ? .2 : .4
     svgObj.attr("height", resizeW * .6);
-    gObj.attr('transform', `scale(${resizeW/1000}) translate(${parentDivWidth * .4 },0)`);
+    gObj.attr('transform', `scale(${resizeW/1000}) translate(${resizeW * percent },0)`);
     d3.selectAll('.statePath').attr('d', d => pathGenerator(d))
 
 }
@@ -34,7 +35,7 @@ function buildChart(towns){
         'class': 'statePath',
         'fill': d => colorScale(+d.properties.permits)
     })
-    .on('mouseover', d => showToolTip(d))
+    .on('mousemove', d => showToolTip(d))
     .on("mouseout", tooltipDiv.style("display", "none"))
 
     svgObj.call(d3.zoom().on('zoom', function(){
@@ -87,7 +88,8 @@ function showToolTip(d){
     let name = d.properties.NAME10;
     let permits = d.properties.permits;
 
-    setTimeout(() => {
+    clearTimeout()
+    let thisTimeout = setTimeout(() => {
         tooltipDiv.style("display", "none")
     }, 2500)
     
@@ -122,7 +124,8 @@ svgObj.attrs({
     "height" : resizeW * .6
 });
 
-gObj.attr('transform', `scale(${resizeW/1000}) translate(${resizeW * .4},0)`);
+let percent = (resizeW > 550) ? .2 : .4
+gObj.attr('transform', `scale(${resizeW/1000}) translate(${resizeW * percent},0)`);
 
 loadAndProcessData().then(res => {
     buildChart(res)
