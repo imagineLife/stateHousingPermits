@@ -3,8 +3,8 @@ function resize(){
     let { parentDivWidth, parentDivHeight, divWidthLessMargins, divHeightLessMargins } = lib.getDimsFromParent(chartDiv, margin);
     
     let resizeW = (parentDivWidth > 900) ? 900 : parentDivWidth
-    svgObj.attr("height", resizeW * .85);
-    gObj.attr('transform', `scale(${resizeW/900}) translate(${parentDivWidth * .03 },0)`);
+    svgObj.attr("height", resizeW * .6);
+    gObj.attr('transform', `scale(${resizeW/1000}) translate(${parentDivWidth * .4 },0)`);
     d3.selectAll('.statePath').attr('d', d => pathGenerator(d))
 
 }
@@ -37,6 +37,10 @@ function buildChart(towns){
     .on('click', d => console.log(d.properties["NAME10"]))
     .append('title')
         .text(showTownName);
+
+    svgObj.call(d3.zoom().on('zoom', function(){
+        gObj.attr("transform", d3.event.transform);
+    }));
 }
 
 function buildTable(data, colNames){
@@ -93,10 +97,10 @@ let colorScale = d3.scaleSequential(d3.interpolateReds);
 let resizeW = (parentDivWidth > 900) ? 900 : parentDivWidth
 svgObj.attrs({
     "width" : resizeW,
-    "height" : resizeW * .85
+    "height" : resizeW * .6
 });
 
-gObj.attr('transform', `scale(${resizeW/700}) translate(${resizeW * .03},0)`);
+gObj.attr('transform', `scale(${resizeW/1000}) translate(${resizeW * .4},0)`);
 
 loadAndProcessData().then(res => {
     buildChart(res)
