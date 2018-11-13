@@ -67,15 +67,33 @@ caption{
   line-height: 1;
 }
 
-@media only screen and (min-width: 400px){
+@media only screen and (min-width: 800px){
+  #chartDiv{
+    right: auto;
+    width: 65%;
+    display: inline-block;
+  }
+
   .svgWrapper{
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 0 0;
   }
 
-  .top10Towns{
-    width: 350px;
+    body > table.top10Towns{
+    width: 30%;
+    margin: unset;
+    display: inline-block;
+    vertical-align: top;
   }
 
+  table.top10Towns > * {
+    display: table;
+    width: 100%;
+  }
+
+  table.top10Towns > tbody > tr > td {
+    width: 50%;
+    display: table-cell;
+  }
 }
 
