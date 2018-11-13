@@ -1,7 +1,5 @@
 function loadAndProcessData(){
-
 	return new Promise((res, rej) => {
-
 		//load tsv data, assign to var
 		return d3.csv('./data.csv').then(csvData => {
 			let townVals = csvData;
