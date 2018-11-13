@@ -88,7 +88,6 @@ function showToolTip(d){
     let name = d.properties.NAME10;
     let permits = d.properties.permits;
 
-    clearTimeout()
     let thisTimeout = setTimeout(() => {
         tooltipDiv.style("display", "none")
     }, 2500)
