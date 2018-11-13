@@ -91,7 +91,7 @@ caption{
     width: 100%;
   }
 
-  table.top10Towns > tbody > tr > td {
+  table.top10Towns > tbody > tr > td,  table.top10Towns > thead > tr > th{
     width: 50%;
     display: table-cell;
   }
