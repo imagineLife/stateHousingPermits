@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CT Permits</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width" name="viewport">
+  <script src="./d3.v5.min.js"></script>
+  <script src="./d3-selection-multi.min.js"></script>
+  <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <h2>Town Housing Permits By Color</h2>
+  <p>The darker the red, the more permits issued...</p>
+  <div id="chartDiv"></div>
+  <table class='top10Towns'>
+    <caption>Top 10 Most-Permitted Towns of 2018</caption>
+    <tbody class="tableBody"></tbody>
+  </table>
+  <!-- <svg width='960' height='750' class='svgWrapper'></svg> -->
+  <script src='./loadAndProcessData.js'></script>
+  <script src='../../lib.js'></script>
+  <script src='index.js'></script>
+</body>
+</html>
